@@ -1,23 +1,18 @@
-// components/Navbar.js
-import Link from "next/link";
-
-export default function Navbar() {
+export default function Navbar({ doctor }) {
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <div className="container mx-auto flex justify-between items-center px-6 py-4">
-        {/* Logo */}
-        <Link href="/" className="text-2xl font-bold text-blue-600">
-          SafiBuilds
-        </Link>
-
-        {/* Menu */}
-        <ul className="flex space-x-6 text-gray-700 font-medium">
-          <li><Link href="/">Home</Link></li>
-          <li><Link href="/industries">Industries</Link></li>
-          <li><Link href="/pricing">Pricing</Link></li>
-          <li><Link href="/contact">Contact</Link></li>
-        </ul>
+    <header className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+      <div className="flex items-center gap-3">
+        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold">
+          {doctor.name.split(" ").map(w => w[0]).join("")}
+        </div>
+        <div>
+          <h1 className="text-lg font-semibold">{doctor.name}</h1>
+          <p className="text-sm text-gray-500">{doctor.title}</p>
+        </div>
       </div>
-    </nav>
+      <div className="text-right">
+        <p className="text-sm text-gray-600">{doctor.hospital}</p>
+      </div>
+    </header>
   );
 }
