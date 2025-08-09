@@ -1,9 +1,18 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+
+const doctor = {
+  name: "Dr. Amjad Ali",
+  title: "Homeopathic Specialist & Owner",
+  hospital: "Mualij Homeopathic Hospital",
+  email: "rjamjadali@gmail.com",
+  phone: "0314 9660574",
+};
+
 export default function AboutPage() {
   return (
     <>
-      <Header />
+      <Header doctor={doctor} />
       <main className="max-w-5xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-center mb-6">About Dr. Amjad</h1>
         <p className="text-lg text-gray-700 leading-relaxed mb-6 text-center">
@@ -15,7 +24,7 @@ export default function AboutPage() {
           to deliver high-quality treatment in a comfortable environment.
         </p>
       </main>
-      <Footer />
+      <Footer doctor={doctor} />
     </>
   );
 }
