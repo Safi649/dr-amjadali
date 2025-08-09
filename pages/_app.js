@@ -1,8 +1,7 @@
 // pages/_app.js
 import "@/styles/globals.css"; // Tailwind global styles
 import { useEffect } from "react";
-import { analytics } from "@/firebase"; // Import analytics instance
-
+import { analytics } from "@/firebase/firebaseConfig";
 export default function MyApp({ Component, pageProps }) {
   useEffect(() => {
     // Runs only in the browser
