@@ -77,12 +77,12 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="flex justify-center md:justify-end"
           >
-            <div className="w-72 h-72 rounded-2xl overflow-hidden card-shadow">
+            <div className="w-72 h-96 rounded-2xl overflow-hidden card-shadow">
               <Image
                 src="/doctor.jpg"
                 alt="Dr. Amjad Ali"
                 width={288}
-                height={288}
+                height={384}
                 className="object-cover w-full h-full"
                 priority
               />
