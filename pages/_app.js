@@ -1,13 +1,15 @@
-import '../styles/globals.css'
-import { AnimatePresence } from "framer-motion";
+// pages/_app.js
+import "@/styles/globals.css"; // Tailwind global styles
+import { useEffect } from "react";
+import { analytics } from "@/firebase"; // Import analytics instance
 
-function MyApp({ Component, pageProps, router }) {
-  return (
-    <AnimatePresence mode="wait" initial={true}>
-      <Component {...pageProps} key={router.route} />
-    </AnimatePresence>
-  )
+export default function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    // Runs only in the browser
+    if (analytics) {
+      console.log("Firebase Analytics initialized ✅");
+    }
+  }, []);
+
+  return <Component {...pageProps} />;
 }
-
-export default MyApp;
-
