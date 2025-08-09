@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { app, analytics } from "../firebase/firebaseConfig";
+import { analytics } from "@/firebase/firebaseConfig";
 const doctor = {
   name: "Dr. Amjad Ali",
   title: "Homeopathic Specialist & Owner",
