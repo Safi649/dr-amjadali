@@ -1,6 +1,8 @@
+// 📁 pages/index.js
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { analytics } from "@/firebase/firebaseConfig";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const doctor = {
   name: "Dr. Amjad Ali",
@@ -34,18 +36,8 @@ const item = {
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-slate-50 to-white">
-      <header className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold">MA</div>
-          <div>
-            <h1 className="text-lg font-semibold">{doctor.name}</h1>
-            <p className="text-sm text-gray-500">{doctor.title}</p>
-          </div>
-        </div>
-        <div className="text-right">
-          <p className="text-sm text-gray-600">{doctor.hospital}</p>
-        </div>
-      </header>
+      {/* Navbar */}
+      <Navbar doctor={doctor} />
 
       <main className="max-w-6xl mx-auto px-6 pb-16">
         {/* HERO */}
@@ -63,11 +55,9 @@ export default function Home() {
             <p className="text-xl text-gray-700">{doctor.title} — <span className="font-medium">{doctor.hospital}</span></p>
             <p className="text-gray-600 max-w-xl">{doctor.tagline}</p>
 
-            <div className="flex gap-4 items-center">
-              <div className="text-sm">
-                <p className="text-gray-700"><strong>Email:</strong> {doctor.email}</p>
-                <p className="text-gray-700"><strong>Phone:</strong> {doctor.phone}</p>
-              </div>
+            <div className="text-sm">
+              <p className="text-gray-700"><strong>Email:</strong> {doctor.email}</p>
+              <p className="text-gray-700"><strong>Phone:</strong> {doctor.phone}</p>
             </div>
           </motion.div>
 
@@ -128,18 +118,8 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="border-t py-6">
-        <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-          <div>
-            <strong className="block">{doctor.name}</strong>
-            <span className="text-sm text-gray-600">{doctor.title} — {doctor.hospital}</span>
-          </div>
-          <div className="text-sm text-gray-600 text-right">
-            <div>Email: {doctor.email}</div>
-            <div>Phone: {doctor.phone}</div>
-          </div>
-        </div>
-      </footer>
+      {/* Footer */}
+      <Footer doctor={doctor} />
     </div>
   );
 }
