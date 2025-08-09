@@ -1,6 +1,5 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { analytics } from "@/firebase/firebaseConfig";
 export default function AboutPage() {
   return (
     <>
