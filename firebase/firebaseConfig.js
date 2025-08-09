@@ -1,10 +1,9 @@
-// 📁 firebase/firebaseConfig.js
-
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+// firebase.js
+import { initializeApp, getApps, getApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDZB_7cRwRYX6rdEnv__wlwqkGKJoQ7HRU",
   authDomain: "dr-amjidali.firebaseapp.com",
@@ -15,9 +14,17 @@ const firebaseConfig = {
   measurementId: "G-YWM7B021KH"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// Initialize Firebase (avoid re-initializing)
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
-export { app, analytics };
+// Auth & Firestore
+export const auth = getAuth(app);
+export const db = getFirestore(app);
 
+// Analytics (only in browser)
+export let analytics;
+if (typeof window !== "undefined") {
+  analytics = getAnalytics(app);
+}
+
+export default app;
