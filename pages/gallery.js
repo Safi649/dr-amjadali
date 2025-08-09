@@ -1,6 +1,14 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+const doctor = {
+  name: "Dr. Amjad Ali",
+  title: "Homeopathic Specialist & Owner",
+  hospital: "Mualij Homeopathic Hospital",
+  email: "rjamjadali@gmail.com",
+  phone: "0314 9660574",
+};
+
 export default function GalleryPage() {
   const images = [
     "/gallery/clinic1.jpg",
@@ -11,7 +19,7 @@ export default function GalleryPage() {
 
   return (
     <>
-      <Header />
+      <Header doctor={doctor} />
       <main className="max-w-6xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-center mb-6">Clinic Gallery</h1>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -26,7 +34,7 @@ export default function GalleryPage() {
           ))}
         </div>
       </main>
-      <Footer />
+      <Footer doctor={doctor} />
     </>
   );
 }
