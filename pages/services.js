@@ -1,6 +1,14 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+const doctor = {
+  name: "Dr. Amjad Ali",
+  title: "Homeopathic Specialist & Owner",
+  hospital: "Mualij Homeopathic Hospital",
+  email: "rjamjadali@gmail.com",
+  phone: "0314 9660574",
+};
+
 export default function ServicesPage() {
   const services = [
     { title: "General Checkups", description: "Routine health checkups for early detection and prevention of diseases." },
@@ -11,7 +19,7 @@ export default function ServicesPage() {
 
   return (
     <>
-      <Header />
+      <Header doctor={doctor} />
       <main className="max-w-5xl mx-auto px-4 py-12">
         <h1 className="text-4xl font-bold text-center mb-6">Our Services</h1>
         <div className="grid md:grid-cols-2 gap-8">
@@ -26,7 +34,7 @@ export default function ServicesPage() {
           ))}
         </div>
       </main>
-      <Footer />
+      <Footer doctor={doctor} />
     </>
   );
 }
