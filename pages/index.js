@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { analytics } from "@/firebase/firebaseConfig";
+
 const doctor = {
   name: "Dr. Amjad Ali",
   title: "Homeopathic Specialist & Owner",
@@ -37,12 +38,12 @@ export default function Home() {
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold">MA</div>
           <div>
-            <h1 className="text-lg font-semibold">Dr. Amjad Ali</h1>
-            <p className="text-sm text-gray-500">Homeopathic Specialist & Owner</p>
+            <h1 className="text-lg font-semibold">{doctor.name}</h1>
+            <p className="text-sm text-gray-500">{doctor.title}</p>
           </div>
         </div>
         <div className="text-right">
-          <p className="text-sm text-gray-600">Mualij Homeopathic Hospital</p>
+          <p className="text-sm text-gray-600">{doctor.hospital}</p>
         </div>
       </header>
 
@@ -76,12 +77,15 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="flex justify-center md:justify-end"
           >
-            {/* Placeholder image — replace with clinic/doctor image later */}
-            <div className="w-72 h-72 rounded-2xl bg-gradient-to-br from-primary/20 to-sky-50 flex items-center justify-center card-shadow">
-              <div className="text-center px-4">
-                <div className="w-32 h-32 rounded-full bg-white/70 mx-auto mb-3 flex items-center justify-center text-2xl font-semibold text-primary">AA</div>
-                <p className="text-sm text-gray-700">Owner & Specialist</p>
-              </div>
+            <div className="w-72 h-72 rounded-2xl overflow-hidden card-shadow">
+              <Image
+                src="/doctor.jpg"
+                alt="Dr. Amjad Ali"
+                width={288}
+                height={288}
+                className="object-cover w-full h-full"
+                priority
+              />
             </div>
           </motion.div>
         </section>
@@ -122,19 +126,6 @@ export default function Home() {
             </motion.div>
           </motion.div>
         </section>
-
-        {/* Gallery / Optional */}
-        <section className="mt-10">
-          <div className="flex items-center justify-between">
-            <h4 className="text-lg font-semibold">Clinic & Environment</h4>
-            <p className="text-sm text-gray-500">Photos (optional)</p>
-          </div>
-          <div className="grid grid-cols-3 gap-3 mt-4">
-            <div className="h-28 rounded-lg bg-slate-100" />
-            <div className="h-28 rounded-lg bg-slate-100" />
-            <div className="h-28 rounded-lg bg-slate-100" />
-          </div>
-        </section>
       </main>
 
       <footer className="border-t py-6">
@@ -152,4 +143,3 @@ export default function Home() {
     </div>
   );
 }
-
