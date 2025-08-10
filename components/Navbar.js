@@ -1,18 +1,23 @@
+import Link from "next/link";
+
 export default function Navbar({ doctor }) {
   return (
-    <header className="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
-      <div className="flex items-center gap-3">
-        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold">
-          {doctor.name.split(" ").map(w => w[0]).join("")}
-        </div>
-        <div>
-          <h1 className="text-lg font-semibold">{doctor.name}</h1>
-          <p className="text-sm text-gray-500">{doctor.title}</p>
+    <nav className="bg-white shadow-md sticky top-0 z-50">
+      <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+        {/* Brand */}
+        <Link href="/" className="text-lg font-semibold text-primary hover:opacity-80">
+          {doctor?.hospital || "Mualij Homeopathic Hospital"}
+        </Link>
+
+        {/* Links */}
+        <div className="space-x-6 text-sm font-medium text-gray-700">
+          <Link href="/">Home</Link>
+          <Link href="/about">About</Link>
+          <Link href="/services">Services</Link>
+          <Link href="/gallery">Gallery</Link>
+          <Link href="/contact">Contact</Link>
         </div>
       </div>
-      <div className="text-right">
-        <p className="text-sm text-gray-600">{doctor.hospital}</p>
-      </div>
-    </header>
+    </nav>
   );
 }
