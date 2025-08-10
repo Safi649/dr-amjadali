@@ -1,18 +1,15 @@
 export default function Footer({ doctor }) {
   return (
-    <footer className="border-t py-6">
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+    <footer className="bg-gray-100 mt-12 py-6">
+      <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-600">
         <div>
-          <strong className="block">{doctor.name}</strong>
-          <span className="text-sm text-gray-600">
-            {doctor.title} — {doctor.hospital}
-          </span>
+          &copy; {new Date().getFullYear()} {doctor?.hospital}. All rights reserved.
         </div>
-        <div className="text-sm text-gray-600 text-right">
-          <div>Email: {doctor.email}</div>
-          <div>Phone: {doctor.phone}</div>
+        <div className="mt-2 sm:mt-0">
+          Contact: {doctor?.phone} | {doctor?.email}
         </div>
       </div>
     </footer>
   );
 }
+
