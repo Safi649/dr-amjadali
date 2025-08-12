@@ -1,14 +1,18 @@
-// pages/_app.js
-import "@/styles/globals.css"; // Tailwind global styles
-import { useEffect } from "react";
-import { analytics } from "@/firebase/firebaseConfig";
-export default function MyApp({ Component, pageProps }) {
-  useEffect(() => {
-    // Runs only in the browser
-    if (analytics) {
-      console.log("Firebase Analytics initialized ✅");
-    }
-  }, []);
+import "../styles/globals.css";
+import Layout from "../components/Layout";
 
-  return <Component {...pageProps} />;
+const doctor = {
+  name: "Dr. Amjad Ali",
+  title: "Homeopathic Specialist & Owner",
+  hospital: "Mualij Homeopathic Hospital",
+  email: "rjamjadali@gmail.com",
+  phone: "0314 9660574",
+};
+
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <Layout doctor={doctor}>
+      <Component {...pageProps} />
+    </Layout>
+  );
 }
