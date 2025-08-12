@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 import { FaStethoscope, FaUserMd, FaVials, FaAmbulance } from "react-icons/fa";
@@ -38,7 +37,6 @@ export default function ServicesPage() {
     },
   ];
 
-  // Animation Variants for Scroll Reveal
   const containerVariants = {
     hidden: {},
     visible: {
@@ -55,9 +53,7 @@ export default function ServicesPage() {
 
   return (
     <>
-      <Header doctor={doctor} />
       <main className="relative bg-gray-900 text-white min-h-screen py-16 px-4 overflow-hidden">
-        
         {/* Animated Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-gray-900 to-indigo-900/30 animate-gradient"></div>
 
@@ -83,7 +79,7 @@ export default function ServicesPage() {
           best possible care.
         </motion.p>
 
-        {/* Service Cards with Scroll Reveal */}
+        {/* Service Cards with Glow Animation */}
         <motion.div
           className="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-8"
           variants={containerVariants}
@@ -94,7 +90,7 @@ export default function ServicesPage() {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="p-6 bg-gray-800 rounded-lg shadow-lg border border-purple-500 hover:shadow-purple-500/50 transition"
+              className="service-card p-6 bg-gray-800 rounded-lg shadow-lg border border-purple-500 transition"
               variants={cardVariants}
               whileHover={{ scale: 1.05 }}
             >
@@ -106,27 +102,11 @@ export default function ServicesPage() {
             </motion.div>
           ))}
         </motion.div>
-
-        {/* Call to Action */}
-        <motion.div
-          className="relative mt-16 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <a
-            href="/contact"
-            className="inline-block bg-purple-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-purple-600 transition shadow-lg hover:shadow-purple-500/50"
-          >
-            Book an Appointment
-          </a>
-        </motion.div>
       </main>
 
       <Footer doctor={doctor} />
 
-      {/* Background Animation Styles */}
+      {/* Glow Animation Styles */}
       <style jsx>{`
         @keyframes gradient {
           0% { background-position: 0% 50%; }
@@ -136,6 +116,17 @@ export default function ServicesPage() {
         .animate-gradient {
           background-size: 200% 200%;
           animation: gradient 8s ease infinite;
+        }
+
+        @keyframes glow {
+          0% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.5); }
+          50% { box-shadow: 0 0 25px rgba(168, 85, 247, 0.9), 0 0 50px rgba(168, 85, 247, 0.7); }
+          100% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.5); }
+        }
+
+        .service-card:hover {
+          animation: glow 1.5s ease-in-out infinite;
+          border-color: #a855f7;
         }
       `}</style>
     </>
