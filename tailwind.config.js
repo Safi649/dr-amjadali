@@ -1,17 +1,11 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class', // Enables dark mode with a CSS class
   content: [
-    "./pages/**/*.{js,jsx}",
-    "./components/**/*.{js,jsx}"
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      colors: {
-        primary: '#0ea5a4', // teal
-        medblue: '#0f172a'
-      }
-    }
+    extend: {},
   },
-  plugins: []
-}
-
+  plugins: [],
+};
