@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
 
@@ -35,7 +34,6 @@ export default function ServicesPage() {
 
   return (
     <>
-      <Header doctor={doctor} />
       <main className="bg-gray-900 text-white min-h-screen py-16 px-4">
         {/* Page Title */}
         <motion.h1
