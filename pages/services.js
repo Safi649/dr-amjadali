@@ -40,9 +40,7 @@ export default function ServicesPage() {
   const containerVariants = {
     hidden: {},
     visible: {
-      transition: {
-        staggerChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.2 },
     },
   };
 
@@ -79,7 +77,7 @@ export default function ServicesPage() {
           best possible care.
         </motion.p>
 
-        {/* Service Cards with Glow Animation */}
+        {/* Service Cards */}
         <motion.div
           className="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-8"
           variants={containerVariants}
@@ -90,11 +88,15 @@ export default function ServicesPage() {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="service-card p-6 bg-gray-800 rounded-lg shadow-lg border border-purple-500 transition"
+              className="p-6 bg-gray-800 rounded-lg shadow-lg border border-purple-500 
+                         transition transform hover:scale-105 hover:bg-gray-700 
+                         hover:shadow-purple-500/50 group card-glow"
               variants={cardVariants}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.07, rotate: 1 }}
             >
-              {service.icon}
+              <div className="transition-transform group-hover:rotate-6 group-hover:scale-110">
+                {service.icon}
+              </div>
               <h2 className="text-2xl font-semibold mb-2 text-purple-400">
                 {service.title}
               </h2>
@@ -106,7 +108,7 @@ export default function ServicesPage() {
 
       <Footer doctor={doctor} />
 
-      {/* Glow Animation Styles */}
+      {/* Background Animation + Glow Effect */}
       <style jsx>{`
         @keyframes gradient {
           0% { background-position: 0% 50%; }
@@ -118,15 +120,14 @@ export default function ServicesPage() {
           animation: gradient 8s ease infinite;
         }
 
+        /* Glow Animation */
         @keyframes glow {
-          0% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.5); }
-          50% { box-shadow: 0 0 25px rgba(168, 85, 247, 0.9), 0 0 50px rgba(168, 85, 247, 0.7); }
-          100% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.5); }
+          0% { box-shadow: 0 0 10px rgba(168, 85, 247, 0.3), 0 0 20px rgba(168, 85, 247, 0.2); }
+          50% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.6), 0 0 40px rgba(168, 85, 247, 0.4); }
+          100% { box-shadow: 0 0 10px rgba(168, 85, 247, 0.3), 0 0 20px rgba(168, 85, 247, 0.2); }
         }
-
-        .service-card:hover {
-          animation: glow 1.5s ease-in-out infinite;
-          border-color: #a855f7;
+        .card-glow:hover {
+          animation: glow 1.5s infinite alternate;
         }
       `}</style>
     </>
