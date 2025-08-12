@@ -1,5 +1,7 @@
+import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { motion } from "framer-motion";
+import { FaStethoscope, FaUserMd, FaVials, FaAmbulance } from "react-icons/fa";
 
 const doctor = {
   name: "Dr. Amjad Ali",
@@ -15,29 +17,38 @@ export default function ServicesPage() {
       title: "General Checkups",
       description:
         "Routine health checkups for early detection and prevention of diseases.",
+      icon: <FaStethoscope className="text-purple-400 text-4xl mb-4" />,
     },
     {
       title: "Specialist Consultations",
       description:
         "Consultations with specialists in cardiology, orthopedics, and more.",
+      icon: <FaUserMd className="text-purple-400 text-4xl mb-4" />,
     },
     {
       title: "Diagnostic Services",
       description:
         "Modern lab testing, X-rays, and ultrasound for accurate diagnosis.",
+      icon: <FaVials className="text-purple-400 text-4xl mb-4" />,
     },
     {
       title: "Emergency Care",
       description: "24/7 emergency services for urgent medical needs.",
+      icon: <FaAmbulance className="text-purple-400 text-4xl mb-4" />,
     },
   ];
 
   return (
     <>
-      <main className="bg-gray-900 text-white min-h-screen py-16 px-4">
+      <Header doctor={doctor} />
+      <main className="relative bg-gray-900 text-white min-h-screen py-16 px-4 overflow-hidden">
+        
+        {/* Animated Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-gray-900 to-indigo-900/30 animate-gradient"></div>
+
         {/* Page Title */}
         <motion.h1
-          className="text-5xl font-bold text-center mb-12 bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent"
+          className="relative text-5xl font-bold text-center mb-6 bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -45,8 +56,20 @@ export default function ServicesPage() {
           Our Services
         </motion.h1>
 
+        {/* Animated Intro */}
+        <motion.p
+          className="relative max-w-2xl mx-auto text-center text-gray-300 mb-12 text-lg"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.3 }}
+        >
+          At <span className="text-purple-400 font-semibold">Mualij Homeopathic Hospital</span>, 
+          we combine experience, compassion, and advanced diagnostic tools to give you the 
+          best possible care.
+        </motion.p>
+
         {/* Service Cards */}
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+        <div className="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -56,6 +79,7 @@ export default function ServicesPage() {
               transition={{ delay: index * 0.2, duration: 0.8 }}
               whileHover={{ scale: 1.05 }}
             >
+              {service.icon}
               <h2 className="text-2xl font-semibold mb-2 text-purple-400">
                 {service.title}
               </h2>
@@ -63,8 +87,37 @@ export default function ServicesPage() {
             </motion.div>
           ))}
         </div>
+
+        {/* Call to Action */}
+        <motion.div
+          className="relative mt-16 text-center"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <a
+            href="/contact"
+            className="inline-block bg-purple-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-purple-600 transition shadow-lg hover:shadow-purple-500/50"
+          >
+            Book an Appointment
+          </a>
+        </motion.div>
       </main>
+
       <Footer doctor={doctor} />
+
+      {/* Background Animation Styles */}
+      <style jsx>{`
+        @keyframes gradient {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 8s ease infinite;
+        }
+      `}</style>
     </>
   );
 }
