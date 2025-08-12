@@ -1,7 +1,6 @@
 // 📁 pages/index.js
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
 const doctor = {
@@ -20,7 +19,8 @@ const doctor = {
   ],
   testimonials: [
     { name: "Sadia Khan", text: "Excellent care and very attentive. Highly recommended." },
-    { name: "Omar Rizwan", text: "Treated my chronic issue where others couldn't help. Very grateful." }
+    { name: "Omar Rizwan", text: "Treated my chronic issue where others couldn't help. Very grateful." },
+    { name: "Ayaz Khan", text: "I had a serious kidney injury. Dr. Amjad's treatment helped me recover fully." }
   ]
 };
 
@@ -36,9 +36,6 @@ const item = {
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
-      {/* Navbar */}
-      <Navbar doctor={doctor} />
-
       <main className="max-w-6xl mx-auto px-6 pb-16">
         {/* HERO */}
         <section className="grid md:grid-cols-2 gap-8 items-center mt-6">
