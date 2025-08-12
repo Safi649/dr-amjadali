@@ -35,7 +35,7 @@ const item = {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-blue-50">
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white">
       {/* Navbar */}
       <Navbar doctor={doctor} />
 
@@ -48,18 +48,18 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="space-y-6"
           >
-            <p className="text-sm text-blue-600 font-medium">Welcome</p>
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight text-blue-900">
+            <p className="text-sm text-purple-400 font-medium">Welcome</p>
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight bg-gradient-to-r from-pink-400 via-purple-500 to-indigo-400 bg-clip-text text-transparent">
               {doctor.name}
             </h2>
-            <p className="text-xl text-gray-700">
-              {doctor.title} — <span className="font-medium">{doctor.hospital}</span>
+            <p className="text-xl text-gray-300">
+              {doctor.title} — <span className="font-medium text-indigo-300">{doctor.hospital}</span>
             </p>
-            <p className="text-gray-600 max-w-xl">{doctor.tagline}</p>
+            <p className="text-gray-400 max-w-xl">{doctor.tagline}</p>
 
-            <div className="text-sm">
-              <p className="text-gray-700"><strong>Email:</strong> {doctor.email}</p>
-              <p className="text-gray-700"><strong>Phone:</strong> {doctor.phone}</p>
+            <div className="text-sm space-y-1">
+              <p className="text-gray-300"><strong>Email:</strong> {doctor.email}</p>
+              <p className="text-gray-300"><strong>Phone:</strong> {doctor.phone}</p>
             </div>
           </motion.div>
 
@@ -73,7 +73,7 @@ export default function Home() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.6 }}
-              className="w-72 h-96 rounded-2xl overflow-hidden shadow-xl ring-4 ring-blue-200"
+              className="w-72 h-96 rounded-2xl overflow-hidden shadow-2xl ring-4 ring-purple-500"
             >
               <Image
                 src="/doctor.jpg"
@@ -89,13 +89,13 @@ export default function Home() {
 
         {/* About */}
         <motion.section
-          className="mt-16 bg-white rounded-2xl p-8 shadow-lg border border-blue-100"
+          className="mt-16 bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-700"
           initial="hidden" animate="show" variants={container}
         >
-          <motion.h3 variants={item} className="text-2xl font-semibold text-blue-800">
+          <motion.h3 variants={item} className="text-2xl font-semibold text-pink-400">
             About Dr. Amjad Ali
           </motion.h3>
-          <motion.p variants={item} className="mt-4 text-gray-700 max-w-3xl">
+          <motion.p variants={item} className="mt-4 text-gray-300 max-w-3xl">
             {doctor.intro}
           </motion.p>
         </motion.section>
@@ -103,10 +103,10 @@ export default function Home() {
         {/* Services */}
         <section className="mt-8 grid md:grid-cols-2 gap-6">
           <motion.div className="space-y-4" initial="hidden" animate="show" variants={container}>
-            <motion.h4 variants={item} className="text-xl font-semibold text-blue-800">
+            <motion.h4 variants={item} className="text-xl font-semibold text-indigo-400">
               Our Treatments
             </motion.h4>
-            <motion.p variants={item} className="text-gray-600">
+            <motion.p variants={item} className="text-gray-400">
               Providing a range of homeopathic treatments tailored to each patient’s needs.
             </motion.p>
             <div className="grid sm:grid-cols-2 gap-4 mt-4">
@@ -114,10 +114,10 @@ export default function Home() {
                 <motion.div
                   key={s.title}
                   variants={item}
-                  className="bg-white p-4 rounded-xl shadow-md border border-blue-100 hover:shadow-lg hover:bg-blue-50 transition-all"
+                  className="bg-gray-800 p-4 rounded-xl shadow-md border border-gray-700 hover:shadow-lg hover:bg-gray-700 transition-all"
                 >
-                  <h5 className="font-medium text-blue-700">{s.title}</h5>
-                  <p className="text-sm text-gray-600 mt-2">{s.desc}</p>
+                  <h5 className="font-medium text-purple-300">{s.title}</h5>
+                  <p className="text-sm text-gray-400 mt-2">{s.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -128,9 +128,9 @@ export default function Home() {
             initial="hidden"
             animate="show"
             variants={container}
-            className="bg-white rounded-2xl p-6 shadow-lg border border-blue-100"
+            className="bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-700"
           >
-            <motion.h4 variants={item} className="text-xl font-semibold text-blue-800">
+            <motion.h4 variants={item} className="text-xl font-semibold text-pink-400">
               Patient Reviews
             </motion.h4>
             <motion.div variants={item} className="mt-4 space-y-4">
@@ -138,10 +138,10 @@ export default function Home() {
                 <motion.div
                   key={idx}
                   whileHover={{ scale: 1.02 }}
-                  className="bg-blue-50 p-4 rounded-lg"
+                  className="bg-gray-700 p-4 rounded-lg"
                 >
-                  <p className="text-sm text-gray-700">“{t.text}”</p>
-                  <div className="mt-2 text-xs text-blue-600">— {t.name}</div>
+                  <p className="text-sm text-gray-300">“{t.text}”</p>
+                  <div className="mt-2 text-xs text-indigo-300">— {t.name}</div>
                 </motion.div>
               ))}
             </motion.div>
