@@ -1,125 +1,156 @@
+// 📁 pages/index.js
+import Image from "next/image";
 import { motion } from "framer-motion";
-import Header from "../components/Header";
+import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+
+const doctor = {
+  name: "Dr. Amjad Ali",
+  title: "Homeopathic Specialist & Owner",
+  hospital: "Mualij Homeopathic Hospital",
+  email: "rjamjadali@gmail.com",
+  phone: "0314 9660574",
+  tagline: "Dedicated to holistic healing and patient care — 20+ years of experience",
+  intro: `Dr. Amjad Ali is a trusted Homeopathic Specialist and the owner of Mualij Homeopathic Hospital. With over 20 years of homeopathic experience, he combines expertise with a patient-centered approach to natural healing.`,
+  services: [
+    { title: "General Homeopathy", desc: "Personalized homeopathic treatment for chronic and acute conditions." },
+    { title: "Child Health", desc: "Gentle and effective care tailored for infants and children." },
+    { title: "Women's Health", desc: "Support for hormonal balance, menstrual issues, and more." },
+    { title: "Allergy & Immunity", desc: "Homeopathic strategies to strengthen immunity and reduce allergic reactions." }
+  ],
+  testimonials: [
+    { name: "Sadia Khan", text: "Excellent care and very attentive. Highly recommended." },
+    { name: "Omar Rizwan", text: "Treated my chronic issue where others couldn't help. Very grateful." }
+  ]
+};
+
+const container = {
+  hidden: { opacity: 0, y: 8 },
+  show: { opacity: 1, y: 0, transition: { staggerChildren: 0.06 } }
+};
+const item = {
+  hidden: { opacity: 0, y: 8 },
+  show: { opacity: 1, y: 0 }
+};
 
 export default function Home() {
   return (
-    <div className="bg-gray-900 text-white min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="relative flex flex-col items-center justify-center text-center px-6 py-24 overflow-hidden">
-          <motion.h1
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="text-5xl md:text-7xl font-extrabold bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent"
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-blue-50">
+      {/* Navbar */}
+      <Navbar doctor={doctor} />
+
+      <main className="max-w-6xl mx-auto px-6 pb-16">
+        {/* HERO */}
+        <section className="grid md:grid-cols-2 gap-8 items-center mt-6">
+          <motion.div
+            initial={{ opacity: 0, x: -18 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="space-y-6"
           >
-            Welcome to Dr. Amjad’s Clinic
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="mt-6 max-w-2xl text-lg text-gray-300"
+            <p className="text-sm text-blue-600 font-medium">Welcome</p>
+            <h2 className="text-4xl md:text-5xl font-bold leading-tight text-blue-900">
+              {doctor.name}
+            </h2>
+            <p className="text-xl text-gray-700">
+              {doctor.title} — <span className="font-medium">{doctor.hospital}</span>
+            </p>
+            <p className="text-gray-600 max-w-xl">{doctor.tagline}</p>
+
+            <div className="text-sm">
+              <p className="text-gray-700"><strong>Email:</strong> {doctor.email}</p>
+              <p className="text-gray-700"><strong>Phone:</strong> {doctor.phone}</p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 18 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center md:justify-end"
           >
-            Providing world-class healthcare services with compassion, care, and advanced technology.
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.6 }}
+              className="w-72 h-96 rounded-2xl overflow-hidden shadow-xl ring-4 ring-blue-200"
+            >
+              <Image
+                src="/doctor.jpg"
+                alt="Dr. Amjad Ali"
+                width={288}
+                height={384}
+                className="object-cover w-full h-full"
+                priority
+              />
+            </motion.div>
+          </motion.div>
+        </section>
+
+        {/* About */}
+        <motion.section
+          className="mt-16 bg-white rounded-2xl p-8 shadow-lg border border-blue-100"
+          initial="hidden" animate="show" variants={container}
+        >
+          <motion.h3 variants={item} className="text-2xl font-semibold text-blue-800">
+            About Dr. Amjad Ali
+          </motion.h3>
+          <motion.p variants={item} className="mt-4 text-gray-700 max-w-3xl">
+            {doctor.intro}
           </motion.p>
-          <motion.a
-            href="#services"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="mt-8 inline-block bg-gradient-to-r from-pink-500 to-purple-500 px-6 py-3 rounded-full font-semibold text-white shadow-lg hover:shadow-pink-500/50 transition-all"
-          >
-            Explore Services
-          </motion.a>
-        </section>
+        </motion.section>
 
-        {/* Services Section */}
-        <section id="services" className="px-6 py-20 max-w-6xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="text-4xl font-bold text-center mb-12 text-gradient"
-          >
-            Our Services
-          </motion.h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { title: "General Checkups", desc: "Routine health checkups to keep you healthy." },
-              { title: "Specialist Consultations", desc: "Meet top specialists for expert advice." },
-              { title: "Diagnostics", desc: "Advanced lab, X-ray, and ultrasound services." },
-              { title: "Emergency Care", desc: "24/7 emergency medical assistance." }
-            ].map((service, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.05 }}
-                className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700 hover:border-pink-500 transition-all"
-              >
-                <h3 className="text-2xl font-semibold text-pink-400 mb-3">{service.title}</h3>
-                <p className="text-gray-300">{service.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
+        {/* Services */}
+        <section className="mt-8 grid md:grid-cols-2 gap-6">
+          <motion.div className="space-y-4" initial="hidden" animate="show" variants={container}>
+            <motion.h4 variants={item} className="text-xl font-semibold text-blue-800">
+              Our Treatments
+            </motion.h4>
+            <motion.p variants={item} className="text-gray-600">
+              Providing a range of homeopathic treatments tailored to each patient’s needs.
+            </motion.p>
+            <div className="grid sm:grid-cols-2 gap-4 mt-4">
+              {doctor.services.map((s) => (
+                <motion.div
+                  key={s.title}
+                  variants={item}
+                  className="bg-white p-4 rounded-xl shadow-md border border-blue-100 hover:shadow-lg hover:bg-blue-50 transition-all"
+                >
+                  <h5 className="font-medium text-blue-700">{s.title}</h5>
+                  <p className="text-sm text-gray-600 mt-2">{s.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
 
-        {/* About Section */}
-        <section className="px-6 py-20 bg-gradient-to-r from-gray-800 via-gray-900 to-black">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="text-4xl font-bold text-center mb-8"
+          {/* Testimonials */}
+          <motion.div
+            initial="hidden"
+            animate="show"
+            variants={container}
+            className="bg-white rounded-2xl p-6 shadow-lg border border-blue-100"
           >
-            About Dr. Amjad
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 1 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto text-center text-gray-300 text-lg"
-          >
-            With over 15 years of experience in healthcare, Dr. Amjad combines medical expertise
-            with compassion to provide top-quality treatment in a modern, comfortable environment.
-          </motion.p>
-        </section>
-
-        {/* Gallery Section */}
-        <section className="px-6 py-20 max-w-6xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="text-4xl font-bold text-center mb-12"
-          >
-            Clinic Gallery
-          </motion.h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-                className="overflow-hidden rounded-lg shadow-lg"
-              >
-                <img
-                  src={`/gallery/clinic${(i % 4) + 1}.jpg`}
-                  alt={`Clinic photo ${i}`}
-                  className="w-full h-64 object-cover hover:scale-105 transition-transform"
-                />
-              </motion.div>
-            ))}
-          </div>
+            <motion.h4 variants={item} className="text-xl font-semibold text-blue-800">
+              Patient Reviews
+            </motion.h4>
+            <motion.div variants={item} className="mt-4 space-y-4">
+              {doctor.testimonials.map((t, idx) => (
+                <motion.div
+                  key={idx}
+                  whileHover={{ scale: 1.02 }}
+                  className="bg-blue-50 p-4 rounded-lg"
+                >
+                  <p className="text-sm text-gray-700">“{t.text}”</p>
+                  <div className="mt-2 text-xs text-blue-600">— {t.name}</div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
         </section>
       </main>
-      <Footer />
+
+      {/* Footer */}
+      <Footer doctor={doctor} />
     </div>
   );
 }
