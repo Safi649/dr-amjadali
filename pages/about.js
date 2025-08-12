@@ -1,99 +1,94 @@
 import { motion } from "framer-motion";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 
 export default function About() {
   return (
-    <div className="bg-gray-900 text-white min-h-screen flex flex-col">
-      <Navbar />
-
+    <div className="bg-gray-900 text-white min-h-screen">
       {/* Hero Section */}
-      <section className="flex-1 flex flex-col items-center justify-center px-6 py-16 text-center">
+      <section className="text-center py-16 bg-gradient-to-r from-purple-800 to-indigo-800">
         <motion.h1
+          className="text-5xl font-bold"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500"
+          transition={{ duration: 1 }}
         >
           About Us
         </motion.h1>
         <motion.p
+          className="mt-4 text-lg max-w-2xl mx-auto text-gray-300"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="mt-6 text-lg max-w-2xl text-gray-300"
+          transition={{ delay: 0.5, duration: 1 }}
         >
-          Welcome to our clinic! We are committed to providing exceptional healthcare services with compassion and care. Our mission is to bring smiles, wellness, and comfort to our patients.
+          We are dedicated to providing exceptional healthcare services with
+          compassion and professionalism.
         </motion.p>
       </section>
 
       {/* Mission Section */}
-      <section className="px-6 py-16 bg-gray-800">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
-          <motion.img
-            src="/doctor.jpg"
-            alt="Our Doctor"
-            className="rounded-lg shadow-lg border-4 border-purple-500"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-          />
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-3xl font-bold text-purple-400 mb-4">Our Mission</h2>
-            <p className="text-gray-300 leading-relaxed">
-              Our mission is to provide world-class medical care in a welcoming environment. We combine advanced technology with personalized treatment to ensure every patient feels valued and cared for.
-            </p>
-          </motion.div>
-        </div>
+      <section className="py-16 px-6 md:px-20 grid md:grid-cols-2 gap-12 items-center">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
+          <p className="text-gray-400 leading-relaxed">
+            Our mission is to ensure that every patient receives personalized
+            care in a comfortable and friendly environment. We combine
+            cutting-edge technology with expert medical knowledge to bring you
+            the best healthcare possible.
+          </p>
+        </motion.div>
+        <motion.img
+          src="/doctor.jpg"
+          alt="Our Doctor"
+          className="rounded-lg shadow-lg border-4 border-purple-500 max-w-sm w-full mx-auto object-cover"
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+        />
       </section>
 
       {/* Values Section */}
-      <section className="px-6 py-16">
-        <div className="max-w-6xl mx-auto text-center">
-          <motion.h2
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-3xl font-bold text-pink-400"
-          >
-            Our Core Values
-          </motion.h2>
-          <motion.div
-            className="mt-8 grid md:grid-cols-3 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { staggerChildren: 0.2 },
-              },
-            }}
-          >
-            {[
-              { title: "Compassion", desc: "We treat our patients like family, with warmth and empathy." },
-              { title: "Excellence", desc: "We strive for the highest standards in medical care." },
-              { title: "Integrity", desc: "We uphold transparency and honesty in every service we provide." },
-            ].map((value, index) => (
-              <motion.div
-                key={index}
-                className="bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-700 hover:border-purple-500 transition"
-                variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0 } }}
-              >
-                <h3 className="text-xl font-bold text-purple-300 mb-2">{value.title}</h3>
-                <p className="text-gray-400">{value.desc}</p>
-              </motion.div>
-            ))}
-          </motion.div>
+      <section className="py-16 bg-gradient-to-r from-indigo-800 to-purple-800 px-6 md:px-20">
+        <motion.h2
+          className="text-3xl font-bold text-center mb-12"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          Our Core Values
+        </motion.h2>
+        <div className="grid md:grid-cols-3 gap-8 text-center">
+          {[
+            {
+              title: "Compassion",
+              desc: "We treat every patient with kindness and understanding.",
+            },
+            {
+              title: "Excellence",
+              desc: "We strive to deliver top-quality healthcare services.",
+            },
+            {
+              title: "Innovation",
+              desc: "We embrace modern technology to improve patient care.",
+            },
+          ].map((value, i) => (
+            <motion.div
+              key={i}
+              className="p-6 bg-gray-800 rounded-lg shadow-lg"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.2, duration: 0.8 }}
+            >
+              <h3 className="text-xl font-semibold mb-2 text-purple-400">
+                {value.title}
+              </h3>
+              <p className="text-gray-400">{value.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 }
