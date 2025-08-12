@@ -1,4 +1,3 @@
-// components/Header.js
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
@@ -16,14 +15,12 @@ export default function Header({ doctor }) {
     { label: "Contact", href: "/contact" },
   ];
 
-  const isActive = (href) => {
-    // exact match or root handling
-    return router.pathname === href;
-  };
+  const isActive = (href) => router.pathname === href;
 
   return (
     <header className="sticky top-0 z-[60] bg-black/40 backdrop-blur-sm border-b border-gray-800">
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+        
         {/* Brand */}
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-500 via-purple-600 to-indigo-500 flex items-center justify-center font-semibold text-white">
@@ -45,24 +42,20 @@ export default function Header({ doctor }) {
             <Link
               key={l.href}
               href={l.href}
-              className={
-                "px-3 py-1 rounded-md text-sm transition " +
-                (isActive(l.href)
+              className={`px-3 py-1 rounded-md text-sm transition ${
+                isActive(l.href)
                   ? "bg-purple-700/40 text-purple-200"
-                  : "text-gray-300 hover:bg-gray-800/60")
-              }
+                  : "text-gray-300 hover:bg-gray-800/60"
+              }`}
               onClick={() => setOpen(false)}
             >
               {l.label}
             </Link>
           ))}
-
-          {/* contact quick actions */}
           {doctor?.email && (
             <a
               href={`mailto:${doctor.email}`}
               className="ml-2 text-sm text-gray-300 hover:text-white"
-              onClick={() => setOpen(false)}
             >
               Email
             </a>
@@ -71,7 +64,6 @@ export default function Header({ doctor }) {
             <a
               href={`tel:${doctor.phone}`}
               className="ml-2 text-sm text-gray-300 hover:text-white"
-              onClick={() => setOpen(false)}
             >
               Call
             </a>
@@ -84,13 +76,24 @@ export default function Header({ doctor }) {
           className="md:hidden p-2 rounded-md text-gray-200 hover:bg-gray-800/50"
           onClick={() => setOpen((v) => !v)}
         >
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="stroke-current">
-            <path d="M4 6h16M4 12h16M4 18h16" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            className="stroke-current"
+          >
+            <path
+              d="M4 6h16M4 12h16M4 18h16"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
           </svg>
         </button>
       </div>
 
-      {/* Mobile menu (animated) */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -105,12 +108,11 @@ export default function Header({ doctor }) {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className={
-                    "px-3 py-2 rounded-md text-sm transition " +
-                    (isActive(l.href)
+                  className={`px-3 py-2 rounded-md text-sm transition ${
+                    isActive(l.href)
                       ? "bg-purple-700/40 text-purple-200"
-                      : "text-gray-300 hover:bg-gray-800/60")
-                  }
+                      : "text-gray-300 hover:bg-gray-800/60"
+                  }`}
                   onClick={() => setOpen(false)}
                 >
                   {l.label}
