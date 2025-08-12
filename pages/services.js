@@ -38,6 +38,21 @@ export default function ServicesPage() {
     },
   ];
 
+  // Animation Variants for Scroll Reveal
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+  };
+
   return (
     <>
       <Header doctor={doctor} />
@@ -68,15 +83,19 @@ export default function ServicesPage() {
           best possible care.
         </motion.p>
 
-        {/* Service Cards */}
-        <div className="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+        {/* Service Cards with Scroll Reveal */}
+        <motion.div
+          className="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {services.map((service, index) => (
             <motion.div
               key={index}
               className="p-6 bg-gray-800 rounded-lg shadow-lg border border-purple-500 hover:shadow-purple-500/50 transition"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.8 }}
+              variants={cardVariants}
               whileHover={{ scale: 1.05 }}
             >
               {service.icon}
@@ -86,13 +105,14 @@ export default function ServicesPage() {
               <p className="text-gray-300">{service.description}</p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Call to Action */}
         <motion.div
           className="relative mt-16 text-center"
           initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
           <a
