@@ -18,7 +18,7 @@ export default function Header({ doctor }) {
   const isActive = (href) => router.pathname === href;
 
   return (
-    <header className="sticky top-0 z-[60] bg-black/40 backdrop-blur-sm border-b border-gray-800">
+    <header className="sticky top-0 z-[60] bg-black backdrop-blur-sm border-b border-gray-800">
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
         
         {/* Brand */}
@@ -101,7 +101,7 @@ export default function Header({ doctor }) {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.22 }}
-            className="md:hidden overflow-hidden border-t border-gray-800 bg-black/30 backdrop-blur-sm"
+            className="md:hidden overflow-hidden border-t border-gray-800 bg-black backdrop-blur-sm"
           >
             <nav className="px-4 py-3 flex flex-col gap-2">
               {links.map((l) => (
